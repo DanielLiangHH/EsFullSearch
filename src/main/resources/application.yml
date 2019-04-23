@@ -1,0 +1,39 @@
+spring:
+  mvc:
+    date-format: yyyy-MM-dd HH:mm:ss
+  cache:
+    type: ehcache
+    ehcache:
+      config: classpath:ehcache.xml
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+  data:
+    elasticsearch:
+      cluster-name: escluster
+      cluster-nodes: 192.168.168.30:9300,192.168.168.31:9300,192.168.168.32:9300
+      repositories:
+        enabled: true
+      properties:
+        path:
+          logs: /var/log/elasticsearch
+          data: /var/lib/elasticsearch
+logging:
+  pattern:
+    console: '%clr(%d{yyyy-MM-dd HH:mm:ss}){green} %clr(-%5p){red} [%clr(%15.15t){blue}]
+      %clr(%-30.30C{jquery-3.2.1.}){yellow}: %m%n'
+  level:
+    org.springframework: INFO
+jdbc:
+  dbs:
+    main:
+      type: druid
+      driverClassName: oracle.jdbc.OracleDriver
+      url: jdbc:oracle:thin:@192.168.168.100:1521:ORCL
+      username: LUCENE
+      password: LUCENE
+    data:
+      type: druid
+      driverClassName: oracle.jdbc.OracleDriver
+      url: jdbc:oracle:thin:@192.168.168.100:1521:ORCL
+      username: LUCENEDATA
+      password: LUCENEDATA
